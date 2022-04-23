@@ -1,0 +1,11 @@
+[tls]
+[[tls.certificates]]
+certFile = "/apps/nginx/jicu/cert/jicu.vip+1.pem"
+keyFile = "/apps/nginx/jicu/cert/jicu.vip+1-key.pem"
+
+[tls.options]
+[tls.options.default]
+minVersion = "VersionTLS12"
+alpnProtocols = ["h2"]
+[tls.options.mintls13]
+minVersion = "VersionTLS13"

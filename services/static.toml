@@ -1,0 +1,22 @@
+[http.routers]
+[http.routers.static-adventures]
+# from: https://static.jicu.vip/adventures.html
+# to:   http://127.0.0.1:2022/adventures/adventures.html
+rule = "Host(`static.jicu.vip`) && Path(`/adventures.html`)"
+service = "static-service"
+entryPoints = ["websecure"]
+middlewares = ["adventures"]
+tls = true
+
+[http.routers.static]
+rule = "Host(`static.jicu.vip`)"
+service = "static-service"
+entryPoints = ["websecure"]
+middlewares = ["static-not-found"]
+tls = true
+
+[http.services]
+[http.services.static-service.loadBalancer]
+passHostHeader = false
+[[http.services.static-service.loadBalancer.servers]]
+url = "http://127.0.0.1:2022/"

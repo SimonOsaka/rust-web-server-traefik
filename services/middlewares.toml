@@ -1,0 +1,13 @@
+[http.middlewares]
+[http.middlewares.adventures.addPrefix]
+prefix = "/adventures"
+
+[http.middlewares.static-not-found.errors]
+status = ["404"]
+service = "static-service"
+query = "/404.html"
+
+[http.middlewares.redirect-scheme.redirectScheme]
+scheme = "https"
+permanent = true
+port = 443

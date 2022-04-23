@@ -1,0 +1,13 @@
+[http.routers]
+[http.routers.adventures]
+rule = "Host(`adventures.jicu.vip`)"
+service = "adventures-service"
+entryPoints = ["websecure"]
+tls = true
+
+[http.services]
+[http.services.adventures-service.loadBalancer]
+[[http.services.adventures-service.loadBalancer.servers]]
+url = "http://127.0.0.1:3030/"
+[[http.services.adventures-service.loadBalancer.servers]]
+url = "http://127.0.0.1:3030/"
